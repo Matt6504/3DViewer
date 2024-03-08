@@ -464,11 +464,11 @@ function openTab(newPage) {
 	renderer.setClearColor(0xffffff, 1);
         container.appendChild(renderer.domElement);
 
-        // Add ambient light
+        // Ambient light
         var ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
         scene.add(ambientLight);
 
-	// Add a directional light
+	// Directional light
         var light = new THREE.DirectionalLight(0xffffff, .5);
         light.position.set(1, 1, 1).normalize();
         scene.add(light);
@@ -499,17 +499,13 @@ function openTab(newPage) {
             function (gltf) {
                 scene.add(gltf.scene);
 	
-		// Assuming your model is loaded and has a bounding box
 		var boundingBox = new THREE.Box3().setFromObject(gltf.scene);
 
-		// Calculate the center point of the bounding box
 		var center = new THREE.Vector3();
 		boundingBox.getCenter(center);
 
-		// Set the camera look at the center of the model
 		camera.lookAt(center);
 
-        	// Remove loading text
         	var loadingText = document.getElementById('loadingText');
         	loadingText.style.display = 'none';
 
@@ -523,7 +519,7 @@ function openTab(newPage) {
         camera.position.z = 5;
         function animate() {
             requestAnimationFrame(animate);
-            controls.update(); // Update controls
+            controls.update();
             renderer.render(scene, camera);
         }
         animate();
