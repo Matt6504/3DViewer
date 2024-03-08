@@ -528,16 +528,6 @@ function openTab(newPage) {
         }
         animate();
 
-	function logCameraInfo() {
-    		console.log("Camera Position:", camera.position);
-    		console.log("Camera Rotation:", camera.rotation);
-    		console.log("Camera LookAt:", camera.getWorldDirection());
-	}
-
-// Call the logCameraInfo function every 5 seconds
-	setInterval(logCameraInfo, 5000);
-        }
-
     function checkScreenWidth() {
         if (window.innerWidth > 820) {
             menuVisible = false;
