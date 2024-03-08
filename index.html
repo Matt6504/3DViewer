@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DCU Stack Home</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap">
+    <link rel="icon" type="image/png" href="Assets/homePNG.png">
+    
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            overflow-y: scroll;
+            overflow-x: none;
+        }
+
+
+        .content {
+            display: none;
+        }
+
+        .video-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            background-color: white;
+        }
+
+        #gif {
+            display: none;
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+
+        .buttonTab:not(.homeButton) {
+            display: inline-block;
+            background-color: transparent;
+            padding: 20px 10px;
+            border: none;
+            border-bottom: 2px solid transparent;
+            border-radius: 0px 0px 0 0;
+            cursor: pointer;
+            position: absolute;
+            top: 30px;
+            text-align: center;
+            font-size: 20px;
+            transition: border-bottom-color 0.3s ease;
+            z-index: 1000;
+        }
+
+        .ImpFrameTab, .aboutTab, .galleryTab, .teamTab {
+            left: 120px;
+        }
+
+        .aboutTab {
+            left: 400px;
+        }
+
+        .galleryTab {
+            left: 540px;
+        }
+
+        .teamTab {
+            left: 640px;
+        }
+
+        .homeButton {
+            display: inline-block;
+            cursor: pointer;
+            position: absolute;
+            top: 25px;
+            left: 20px;
+            background-color: transparent;
+            border: none;
+            z-index: 1000;
+        }
+
+        .buttonTab:hover:not(.homeButton) {
+            color: #707070;
+            border-bottom-color: rgba(26, 60, 102, 1);
+        }
+
+        .menuButton {
+            display: none;
+            padding: 10px 10px;
+            background-color: rgba(26, 60, 102, 1);
+            color: rgba(255, 167, 0, 1);
+            border-radius: 10px;
+            position: fixed;
+            top: 110px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 20px;
+            cursor: pointer;
+            text-align: center;
+            z-index: 1000;
+        }
+
+        .dark-grey-fade {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 0;
+            overflow: hidden;
+            background: linear-gradient(to bottom, rgba(18, 21, 25, 1), rgba(18, 21, 25, .8));
+            display: none;
+            z-index: 999;
+        }
+
+        .fade-in {
+            animation: slideDown 0.5s ease forwards;
+            height: 100%;
+        }
+
+        .fade-out {
+            animation: slideUp 0.5s ease forwards;
+        }
+
+        hr.menu-line {
+            position: absolute;
+            top: 185px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            border: 0;
+            border-top: 1px solid rgba(255, 167, 0, 1);
+            margin: 0;
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        @keyframes slideDown {
+            0% {
+                height: 0px;
+            }
+
+            100% {
+                height: 100%;
+            }
+        }
+
+        @keyframes slideUp {
+            0% {
+                height: 100%;
+            }
+
+            100% {
+                height: 0;
+            }
+        }
+
+        @media screen and (max-width: 820px) {
+            .buttonTab:not(.homeButton) {
+                display: none;
+            }
+
+            .menuButton {
+                display: block;
+                position: absolute;
+                top: 110px;
+                left: 50%;
+                transform: translateX(-50%);
+                font-size: 20px;
+                cursor: pointer;
+                text-align: center;
+            }
+
+            .homeButton {
+                position: relative;
+                top: 10px;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            .dark-grey-fade {
+                display: block;
+            }
+
+            .buttonTab2 {
+                background-color: rgba(26, 60, 102, 1);
+                color: rgba(255, 167, 0, 1);
+                border: none;
+                font-size: 15px;
+                padding: 10px;
+                cursor: pointer;
+                transition: background-color 0.3s ease, opacity 0.5s ease;
+                border-radius: 10px;
+                font-family: 'Roboto', sans-serif;
+                opacity: 0;
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+                z-index: 1000;
+            }
+
+            .fade-in {
+                animation: slideDown 0.5s ease forwards;
+            }
+
+            .ImpFrameTab2 {
+                top: 220px;
+            }
+
+            .aboutTab2 {
+                top: 280px;
+            }
+
+            .galleryTab2 {
+                top: 340px;
+            }
+
+            .teamTab2 {
+                top: 400px;
+            }
+
+            .menu-line {
+                display: block;
+            }
+        }
+
+        @media screen and (max-width: 406px) {
+            .aboutTab2 {
+                top: 300px;
+            }
+
+            .galleryTab2 {
+                top: 360px;
+            }
+
+            .teamTab2 {
+                top: 420px;
+            }
+
+            .menu-line {
+                display: block;
+            }
+        }
+
+	.header2 {
+    		text-align: center;
+    		position: absolute;
+    		top: 185px;
+    		width: 100%;
+	}
+
+	.header2 h2 {
+    		font-size: 24px;
+    		margin-bottom: 10px;
+	}
+
+	.header2 hr {
+    		width: 150px;
+    		margin: auto;
+    		border: 1px solid #333;
+	}
+	.welcomeheader {
+		text-align: center;
+		position: absolute;
+		top: 320px;
+		width: 100%;
+		color: rgba(18, 21, 25, 1);
+		font-size: 16px;
+	}	
+	.welcomeheader img {
+		position: absolute;
+		width: 300px;
+		height: 300px;
+		top: 135px;
+		left: 50%;
+		transform: translateX(-50%);
+		border: 1px solid black;
+	}
+	.titleheader {
+    		text-align: center;
+    		position: absolute;
+    		top: 235px;
+    		width: 100%;
+		font-size: 20px;
+	}
+	.titleheader h5 {
+		font-size: 15px;
+	}
+	.para1 {
+		text-align: center;
+		position: absolute;
+		top: 800px;
+		width: 100%;
+		color: rgba(18, 21, 25, 1);
+		font-size: 18px;
+		font-family: 'Roboto', sans-serif;
+	}	
+	.pic8prev img {
+		position: absolute;
+		max-width: 100%;
+		height: auto;
+		top: 1120px;
+	}
+	.para2 {
+		text-align: center;
+		position: absolute;
+		top: 1400px;
+		width: 100%;
+		color: rgba(18, 21, 25, 1);
+		font-size: 18px;
+		font-family: 'Roboto', sans-serif;
+	}
+	.para2 hr {
+		width: 80%;
+    		margin-top: 20px;
+    		border: 1px solid #333;
+	}
+	.para2 img {
+		width: 100%;
+	}
+    </style>
+</head>
+<body>
+
+<div class="video-container">
+    <img id="gif" src="Assets/initGIF.gif" alt="Your GIF">
+</div>
+
+<div class="content">
+
+    <div class="menuButton" onclick="toggleMenu()">Learn</div>
+
+    <div class="dark-grey-fade" id="darkGreyFade"></div>
+
+    <button class="buttonTab homeButton" onclick="openTab('index.html')">
+        <img src="Assets/homePNG.png" alt="Home Page" style="width:70px; height:70px;">
+    </button>
+    <button class="buttonTab ImpFrameTab" onclick="openTab('ImpFrame.html')">Implementation Framework</button>
+    <button class="buttonTab aboutTab" onclick="openTab('About.html')">GIKEN LTD.</button>
+    <button class="buttonTab galleryTab" onclick="openTab('Gallery.html')">Gallery</button>
+    <button class="buttonTab teamTab" onclick="openTab('Team.html')">About the Team</button>
+
+    <button class="buttonTab2 ImpFrameTab2" onclick="openTab('ImpFrame.html')">Implementation Framework</button>
+    <button class="buttonTab2 aboutTab2" onclick="openTab('About.html')">GIKEN LTD.</button>
+    <button class="buttonTab2 galleryTab2" onclick="openTab('Gallery.html')">Gallery</button>
+    <button class="buttonTab2 teamTab2" onclick="openTab('Team.html')">About the Team</button>
+
+    <hr class="menu-line">
+
+    <div class="header2">
+    <h2>The Stack</h2>
+    <hr>
+    </div>
+
+    <div class="welcomeheader">This website is designed to help you learn about<br>Team L's EM105 <i>Smarter Travel Awards</i> Project.<br><br><br>
+    We are new to programming, so do please go easy on the website :)
+    <img src="Assets/homePic.jpg" alt="Seems like the image is unable to load :(">
+    </div>
+
+    <div class="titleheader">
+    <h5>Supporting The Active Commute via Keycard</h5>
+    </div>
+
+    <div class="para1">Our project provides high-level research into the potential implementation of GIKEN LTD.'s <i>ECO Cycle</i> subterranean bicycle storage and retrieval system.<br><br><strong>We have prepared;</strong><br><br>Statistics package on bicycle theft<br><br>3D visualisation tool<br><br>Information about the <i>Eco Cycle</i> product and corresponding implementation framework.</div>
+
+    <div class="pic8prev">
+	<img src="Assets/Pic8.jpg" alt="Seems like the image is unable to load:(">
+    </div>
+
+    <div class="para2">Bike theft is on the rise; we all know somebody who knows somebody who's had their bike stolen. Here's some stats;<br>Since 2009 and the introduction of the <i>Bike to Work</i> scheme, reported incidents of bike thefts have doubled and continue to rise.<br>It is estimated that the amount of bikes stolen in 2013 was <b>20,000</b>.<br><b>75%</b> of national bike theft incidents occur in Dublin.<br><br>These statistics represent a challenge to <i>active and sustainable travel</i> ; <b>42%</b> of people stop or reduce their frequency of cycling in response to exposure (either first or second hand) to a bike theft incident.<br><br>As a team, we understood that offering a solution which enhances the security of bike storage, and reduces the probability of a theft on campus, would contribute to the support of <i>active travel</i> to and from campus.<br><br>Use the <i>Learn</i> tab at the top of each page to navigate you way around our site and learn more about what we did to bring awareness to this potential solution in supporting <i>active travel</i> to and from campus:)<br>
+    <hr>
+    <img src="Assets/footerPic.JPG" alt="Seems like the footer is unable to load:("></div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var gif = document.getElementById('gif');
+        gif.style.display = 'block';
+        setTimeout(function () {
+            gif.style.display = 'none';
+            showContent();
+        }, 2050); // Adjust the duration (in milliseconds) as needed
+    });
+
+function openTab(newPage) {
+        window.location.href = newPage;
+}
+
+    var menuVisible = false;
+
+    function toggleMenu() {
+        var darkGreyFade = document.getElementById("darkGreyFade");
+        var menuLine = document.querySelector('.menu-line');
+        var additionalTabs = document.querySelectorAll('.buttonTab2');
+
+        if (!menuVisible) {
+            darkGreyFade.classList.remove("fade-out");
+            darkGreyFade.classList.add("fade-in");
+            menuLine.style.opacity = '1';
+            additionalTabs.forEach(function (tab) {
+                tab.style.display = 'inline-block';
+                setTimeout(function () {
+                    tab.style.opacity = '1';
+                }, 50);
+            });
+        } else {
+            darkGreyFade.classList.remove("fade-in");
+            darkGreyFade.classList.add("fade-out");
+            menuLine.style.opacity = '0';
+            additionalTabs.forEach(function (tab) {
+                tab.style.opacity = '0';
+                setTimeout(function () {
+                    tab.style.display = 'none';
+                }, 500);
+            });
+        }
+        menuVisible = !menuVisible;
+    }
+
+    function showContent() {
+        var videoContainer = document.querySelector('.video-container');
+        var content = document.querySelector('.content');
+        if (!content.classList.contains('content-shown')) {
+            videoContainer.style.display = 'none';
+            content.style.display = 'block';
+            content.classList.add('content-shown');
+        }
+    }
+
+    function checkScreenWidth() {
+        if (window.innerWidth > 820) {
+            menuVisible = false;
+            var darkGreyFade = document.getElementById("darkGreyFade");
+            darkGreyFade.classList.remove("fade-in", "fade-out");
+            var additionalTabs = document.querySelectorAll('.buttonTab2');
+            additionalTabs.forEach(function (tab) {
+                tab.style.display = 'none';
+            });
+            document.querySelector('.menu-line').style.opacity = '0';
+        }
+    }
+
+    window.addEventListener('resize', checkScreenWidth);
+
+    checkScreenWidth();
+</script>
+</body>
+</html>
